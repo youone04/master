@@ -8,7 +8,7 @@ typedef struct tNode {
     addrNode left;
     addrNode right;
 
-}root;
+}node;
 
 typedef addrNode BinTree;
 
@@ -19,21 +19,42 @@ typedef addrNode BinTree;
 
 #define Nil NULL
 
-BinTree Tree (infotype Akar, BinTree L, BinTree R){
-/* Menghasilkan sebuah pohon biner dari A, L, dan R, jika
-   alokasi berhasil */
-/* Menghasilkan pohon kosong (Nil) jika alokasi gagal */ 
-
-}
-
 addrNode AlokNode (infotype X){
 /* Mengirimkan addrNode hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka addrNode tidak Nil, dan
    misalnya menghasilkan P,
    maka Akar(P) = X, Left(P) = Nil, Right(P)=Nil */
 /* Jika alokasi gagal, mengirimkan Nil */
+addrNode P =(addrNode) malloc(sizeof(node));
+
+if(P==Nil)
+    return Nil;
+
+    Akar(P)=X;
+    Left(P)=Nil;
+    Right(P)=Nil;
+
+    return P;
+
 }
- 
+
+
+BinTree Tree (infotype A, BinTree L, BinTree R){
+	//Kamus Lokal
+	addrNode P=AlokNode(A);
+	//Algoritma
+
+
+
+	if (P!=Nil) {
+		Akar(P) = A;
+		Left(P) = L;
+		Right(P) = R;
+	}
+	return P;
+	//Algoritma
+
+}
 void DealokNode (addrNode P){
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
@@ -121,6 +142,33 @@ void AddDaunTerkanan (BinTree *P, infotype X)
 }
 
 int main (){
+    BinTree P;
+
+    int k,l;
+
+    cin >> k;
+
+    for(int i=0; i<k; i++){
+        cin >> l;
+
+        if(IsTreeEmpty(P)){
+            l=Akar(P);
+
+            }
+        else if(l<Akar(P)){
+            AddDaunTerkanan(&P,l);
+
+            }
+        else{
+            AddDaunTerkanan(&P,l);
+
+            }
 
 
+
+            }
+
+
+
+    return 0;
     }
