@@ -1,0 +1,105 @@
+#include <iostream>
+using namespace std;
+
+typedef int infotype;
+typedef struct tNode *addrNode;
+typedef struct tNode {
+    infotype info;
+    addrNode left;
+    addrNode right;
+
+}Tree;
+
+typedef addrNode BinTree;
+
+/* Selektor */
+#define Akar(P) (P)->info
+#define Left(P) (P)->left
+#define Right(P) (P)->right
+
+#define Nil NULL
+
+bool IsTreeEmpty (BinTree P)
+/* Mengirimkan true jika P adalah pohon biner kosong */
+{   /* Kamus Lokal */
+    /* Algoritma */
+    return (P == Nil);
+}
+bool IsTreeOneElmt (BinTree P)
+/* Mengirimkan true jika P adalah pohon biner tidak kosong
+   dan hanya memiliki 1 elemen */
+{   /* Kamus Lokal */
+    /* Algoritma */
+    if (P != Nil) {
+        return (Left(P) == Nil && Right(P) == Nil);
+    } else { /* Pohon kosong */
+        return false;
+    }
+}
+
+bool IsUnerLeft (BinTree P)
+/* Mengirimkan true jika pohon biner tidak kosong
+   P adalah pohon unerleft: hanya mempunyai subpohon kiri */
+{   /* Kamus Lokal */
+    /* Algoritma */
+    if (P != Nil) {
+        return (Left(P) != Nil && Right(P) == Nil);
+    } else { /* Pohon kosong */
+        return false;
+    }
+}
+
+bool IsUnerRight (BinTree P)
+/* Mengirimkan true jika pohon biner tidak kosong P adalah pohon
+   unerright: hanya mempunyai subpohon kanan*/
+{   /* Kamus Lokal */
+    /* Algoritma */
+    if (P != Nil) {
+        return (Left(P) == Nil && Right(P) != Nil);
+    } else { /* Pohon kosong */
+        return false;
+    }
+}
+
+bool IsBiner (BinTree P)
+/* Mengirimkan true jika pohon biner tidak kosong
+   P adalah pohon biner: mempunyai subpohon kiri dan subpohon kanan*/
+{   /* Kamus Lokal */
+    /* Algoritma */
+    if (P != Nil) {
+        return (Left(P) != Nil && Right(P) != Nil);
+    } else { /* Pohon kosong */
+        return false;
+    }
+}
+
+void AddDaunTerkiri (BinTree *P, infotype X)
+/* I.S. P boleh kosong */
+/* F.S. P bertambah simpulnya,
+        dengan X sebagai simpul daun terkiri */
+{   /* Kamus Lokal */
+    /* Algoritma */
+    if (IsTreeEmpty(*P)) { /* Basis-0 */
+        *P = Tree(X,Nil,Nil);
+    } else {              /* Rekurens */
+        AddDaunTerkiri(&(Left(*P)),X);
+    }
+}
+
+void AddDaunTerkanan (BinTree *P, infotype X)
+/* I.S. P boleh kosong */
+/* F.S. P bertambah simpulnya,
+        dengan X sebagai simpul daun terkiri */
+{   /* Kamus Lokal */
+    /* Algoritma */
+    if (IsTreeEmpty(*P)) { /* Basis-0 */
+        *P = Tree(X,Nil,Nil);
+    } else {              /* Rekurens */
+        AddDaunTerkanan(&(Right(*P)),X);
+    }
+}
+
+int main (){
+
+
+    }
